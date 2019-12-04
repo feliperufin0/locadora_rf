@@ -11,11 +11,11 @@ import java.sql.*;
  *
  * @author Felipe Rufino
  */
-public class EcecuteSQL {
+public class ExecuteSQL {
     
     private Connection con;
   
-    public EcecuteSQL(Connection con){
+    public ExecuteSQL(Connection con){
             setCon(con);
     }
     

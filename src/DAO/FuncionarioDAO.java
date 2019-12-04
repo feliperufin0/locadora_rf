@@ -9,7 +9,7 @@ package DAO;
  *
  * @author Felipe Rufino
  */
-public class FuncionarioDAO extends EcecuteSQL{
+public class FuncionarioDAO extends ExecuteSQL{
     private int cod;
     private String nome;
     private String login;

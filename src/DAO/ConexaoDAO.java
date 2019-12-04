@@ -21,7 +21,7 @@ public class ConexaoDAO {
             con = DriverManager.getConnection(url, "root","");
         
          }catch (Exception e){
-            JOptionPane.ShowMessageDialog(null, "Erro na conexão com o banco",
+            JOptionPane.showMessageDialog(null, "Erro na conexão com o banco",
                     "Video Locadora", JOptionPane.ERROR_MESSAGE);
             e.getMessage();
         
