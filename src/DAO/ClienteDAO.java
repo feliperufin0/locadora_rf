@@ -5,109 +5,49 @@
  */
 package DAO;
 
+import Modelo.Cliente;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 /**
  *
  * @author Felipe Rufino
  */
-public class ClienteDAO {
-    private int Codigo;
-    private String Nome;
-    private String Nascimento;
-    private String RG;
-    private String CPF;
-    private String Telefone;
-    private String Email;
-    private String Bairro;
-    private String Rua;
-    private String Numero;
-    private String CEP;
+public class ClienteDAO extends ExecuteSQL{
 
-    public int getCodigo() {
-        return Codigo;
-    }
-
-    public void setCodigo(int Codigo) {
-        this.Codigo = Codigo;
-    }
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String Nome) {
-        this.Nome = Nome;
-    }
-
-    public String getNascimento() {
-        return Nascimento;
-    }
-
-    public void setNascimento(String Nascimento) {
-        this.Nascimento = Nascimento;
-    }
-
-    public String getRG() {
-        return RG;
-    }
-
-    public void setRG(String RG) {
-        this.RG = RG;
-    }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-
-    public String getTelefone() {
-        return Telefone;
-    }
-
-    public void setTelefone(String Telefone) {
-        this.Telefone = Telefone;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-
-    public String getBairro() {
-        return Bairro;
-    }
-
-    public void setBairro(String Bairro) {
-        this.Bairro = Bairro;
-    }
-
-    public String getRua() {
-        return Rua;
-    }
-
-    public void setRua(String Rua) {
-        this.Rua = Rua;
-    }
-
-    public String getNumero() {
-        return Numero;
-    }
-
-    public void setNumero(String Numero) {
-        this.Numero = Numero;
-    }
-
-    public String getCEP() {
-        return CEP;
-    }
-
-    public void setCEP(String CEP) {
-        this.CEP = CEP;
+    public ClienteDAO(Connection con) {
+        super(con);
     }
     
+   public String Inserir_Cliente(Cliente a){
+       String sql = "insert into cliente values(0,?,?,?,?,?,?,?,?,?,?)";
+       try{
+           PreparedStatement ps = getCon().prepareStatement(sql);
+           
+           ps.setString(1, a.getNome());
+           ps.setString(2, a.getNascimento());
+           ps.setString(3, a.getRG());
+           ps.setString(4, a.getCPF());
+           ps.setString(5, a.getEmail());
+           ps.setString(6, a.getTelefone());
+           ps.setString(7, a.getBairro());
+           ps.setString(8, a.getRua());
+           ps.setInt(9, a.getNumero());
+           ps.setString(10, a.getCPF());
+           
+           if (ps.executeUpdate() > 0){
+               return "Inserido com sucesso.";
+           }else{
+               return "Erro ao inserir";
+           }
+       }catch (SQLException e){
+           return e.getMessage();
+           
+           }
+       
+       
+   
+   }
+
+
 }
