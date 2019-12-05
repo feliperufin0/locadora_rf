@@ -5,6 +5,10 @@
  */
 package Principal;
 
+import DAO.FuncionarioDAO;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Felipe Rufino
@@ -29,8 +33,8 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tfUsuario = new javax.swing.JTextField();
+        pfSenha = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btEntrar = new javax.swing.JButton();
 
@@ -40,9 +44,9 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfUsuarioActionPerformed(evt);
             }
         });
 
@@ -78,8 +82,8 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,11 +92,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -103,9 +107,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfUsuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -113,49 +117,39 @@ public class Login extends javax.swing.JFrame {
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
          Connection con = Conexao.AbrirConexao();
-        FunconarioDAo  sql = new FuncionarioDAO(con);
+        FuncionarioDAO sql = new FuncionarioDAO(con);
         String login = tfUsuario.getText();
-        String senha = tfSenha.getText();
-         if (login.equalsIgnoreCase()senha.equalsIgnoreCase()){
-         
-         
-        JOptionPane.showMessageDialog(null,
-                Nenhum campo pode estar vazio,video locadora, JOoptionPane.);
-        tfUsuario.SetText();
-        pfSenha.SetText();
+        String senha = pfSenha.getText();
+         if (login.equalsIgnoreCase("") || senha.equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null,"Nenhum campo pode estar vazio",
+                   "video locadora", JOptionPane.WARNING_MESSAGE);
+            tfUsuario.setText("");
+            pfSenha.setText("");
          
          }else{
              if (sql.Logar(login, senha)== true){
                  new Thread(){
                  public void run (){
                  
-                 for(int i = 0;i 101; i++){
-                 jProgressnBar.SetValue(i);
-                 
-                 try{
-                 
-                     Theader.sleep(35);
-                 
-                 
-                        }catch(Exeption ex){ 
-                           ex.getMenssege();
+                 for(int i = 0;i < 101; i++){
+                 jProgressBar.SetValue(i);
+                 try{               
+                     Thread.sleep(35);                          
+                        }catch(Exception ex){ 
+                           ex.getMessage();
                            
-                        }
-                 
-                 
+                        }     
                  }
                    new Menu().SetVisible(true);
-                   dispose();
-                   
-                 
+                   dispose();                 
                     }
                  
                 }.start();
              }else {
-             
-             JOptionPane.showMessageDialog(null,Usuário ou senha inválido,video locadora, JOpiontPane.ERRO_MESSAGE  );
-             tfUsuario.SetText();
-             pfSenha.SetText();
+             JOptionPane.showMessageDialog(null,"Usuário ou senha inválidos",
+                     "video locadora", JOptiontPane.ERROR_MESSAGE);
+             tfUsuario.setText("");
+             pfSenha.setText("");
              }
                  
          }
@@ -202,7 +196,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField pfSenha;
+    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

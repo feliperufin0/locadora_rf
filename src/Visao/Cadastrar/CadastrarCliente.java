@@ -291,7 +291,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         }else{
             Connection con = Conexao.AbrirConexao();
             ClienteDAO sql = new ClienteDAO(con);
-            int n  = Interger.parseInt(numero);
+            int n  = Integer.parseInt(numero);
             Cliente a = new Cliente();
             
             a.setNome(nome);
