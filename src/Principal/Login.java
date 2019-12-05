@@ -112,7 +112,54 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        // TODO add your handling code here:
+         Connection con = Conexao.AbrirConexao();
+        FunconarioDAo  sql = new FuncionarioDAO(con);
+        String login = tfUsuario.getText();
+        String senha = tfSenha.getText();
+         if (login.equalsIgnoreCase()senha.equalsIgnoreCase()){
+         
+         
+        JOptionPane.showMessageDialog(null,
+                Nenhum campo pode estar vazio,video locadora, JOoptionPane.);
+        tfUsuario.SetText();
+        pfSenha.SetText();
+         
+         }else{
+             if (sql.Logar(login, senha)== true){
+                 new Thread(){
+                 public void run (){
+                 
+                 for(int i = 0;i 101; i++){
+                 jProgressnBar.SetValue(i);
+                 
+                 try{
+                 
+                     Theader.sleep(35);
+                 
+                 
+                        }catch(Exeption ex){ 
+                           ex.getMenssege();
+                           
+                        }
+                 
+                 
+                 }
+                   new Menu().SetVisible(true);
+                   dispose();
+                   
+                 
+                    }
+                 
+                }.start();
+             }else {
+             
+             JOptionPane.showMessageDialog(null,Usuário ou senha inválido,video locadora, JOpiontPane.ERRO_MESSAGE  );
+             tfUsuario.SetText();
+             pfSenha.SetText();
+             }
+                 
+         }
+         
     }//GEN-LAST:event_btEntrarActionPerformed
 
     /**
