@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Principal;
-
+import DAO.Conexao;
 import DAO.FuncionarioDAO;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -37,6 +37,7 @@ public class Login extends javax.swing.JFrame {
         pfSenha = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btEntrar = new javax.swing.JButton();
+        jProgressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,11 +86,13 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(86, Short.MAX_VALUE))
+            .addComponent(jProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addComponent(jProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,7 +135,7 @@ public class Login extends javax.swing.JFrame {
                  public void run (){
                  
                  for(int i = 0;i < 101; i++){
-                 jProgressBar.SetValue(i);
+                 jProgressBar.setValue(i);
                  try{               
                      Thread.sleep(35);                          
                         }catch(Exception ex){ 
@@ -140,14 +143,14 @@ public class Login extends javax.swing.JFrame {
                            
                         }     
                  }
-                   new Menu().SetVisible(true);
+                   new Menu().setVisible(true);
                    dispose();                 
                     }
                  
                 }.start();
              }else {
              JOptionPane.showMessageDialog(null,"Usuário ou senha inválidos",
-                     "video locadora", JOptiontPane.ERROR_MESSAGE);
+                     "video locadora", JOptionPane.ERROR_MESSAGE);
              tfUsuario.setText("");
              pfSenha.setText("");
              }
@@ -196,6 +199,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JTextField pfSenha;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
