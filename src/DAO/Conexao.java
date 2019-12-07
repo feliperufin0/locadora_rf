@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Felipe Rufino
  */
-public class ConexaoDAO extends ExecuteSQL {
+public class Conexao{
     public static Connection  AbrirConexao() {
         Connection con = null;
          try{
@@ -36,7 +36,7 @@ public class ConexaoDAO extends ExecuteSQL {
     }
 }
 
-    public ConexaoDAO(Connection con) {
-        super(con);
+    public Conexao(Connection con) {
+       
     }
 }
