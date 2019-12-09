@@ -80,5 +80,34 @@ public class ClienteDAO extends ExecuteSQL{
         return null;
         }
         
-     }
-}
+
+   }
+   public List<Cliente> Pesquisar_Nome_Cliente(String nome){
+       String sql = "select idcliente, nome, RG, CPF, Telefone, Email" 
+               + "from cliente where nome Like'"+ nome +"'";
+   return null;
+   }
+   
+   
+   public boolean Testar_Cliente(int cod){
+       boolean Resultado = false;
+       try{
+           
+           String sql = "select * from cliente where idcliente = "+ cod + "";
+           PreparedStatement ps = getCon().prepareStatement(sql);
+           ResultSet rs = ps.executeQuery();
+           
+           if(rs !=null){
+               while (rs.next()) {
+                   Resultado = true;
+               }
+           }
+       }catch (SQLException ex) {
+           ex.getMessage();
+       }
+       return Resultado;
+               }
+           }
+       
+   
+
