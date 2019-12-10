@@ -1,4 +1,4 @@
-/*
+n /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -166,10 +166,35 @@ public class ClienteDAO extends ExecuteSQL{
                 return e.getMessage();
             }
    }
-            
-            
-   
-   
+
+            public List<Cliente> ListarComboCliente(){
+
+            String sql = "select nome from cliente order by name";
+            List<Cliente> lista = new ArrayList<>();
+
+            try{
+
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs != null){
+                while (rs.next()){
+                         Cliente a = new Cliente();
+                         a.setNome(rs.getString(1));
+                         lista.add(a);
+
+
+                     }
+                     return lista;
+                 }else{
+                         return null;
+
+                     }
+              }catch (Exception e){
+                  return null;
+              }
+
+            }
 }
            
        
