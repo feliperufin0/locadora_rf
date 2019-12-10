@@ -195,6 +195,37 @@ public class ClienteDAO extends ExecuteSQL{
               }
 
             }
+            
+            
+            
+            public List<Cliente> ConsultaCodigoCliente(String nome){
+
+            String sql = "select idcliente from cliente where nome = '"+nome+"' ";
+            List<Cliente> lista = new ArrayList<>();
+
+            try{
+
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs != null){
+                while (rs.next()){
+                         Cliente a = new Cliente();
+                         a.setCodigo(rs.getInt(1));
+                         lista.add(a);
+
+
+                     }
+                     return lista;
+                 }else{
+                         return null;
+
+                     }
+              }catch (Exception e){
+                  return null;
+              }
+
+            }
 }
            
        
