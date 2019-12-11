@@ -116,8 +116,22 @@ public class ExcluirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCB_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCB_NomeActionPerformed
-        // TODO add your handling code here:
-        
+
+            Connection con = Conexao.AbrirConexao();
+            ClienteDAO sql = new ClienteDAO(con);
+            List<Cliente> lista = new ArrayList<>();
+            String nome = jCB_Nome.getSelectedItem().toString();
+
+            lista = sql.ConsultaCodigoCliente(nome);
+
+
+            for (Cliente b : lista ){
+                int a = b.getCodigo();
+                jTF_codigo.setText(""+a);
+
+                }
+                Conexao.FecharConexao(con);    
+
         
     }//GEN-LAST:event_jCB_NomeActionPerformed
 
