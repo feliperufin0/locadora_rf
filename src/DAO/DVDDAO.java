@@ -5,6 +5,10 @@
  */
 package DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Felipe Rufino
@@ -56,4 +60,49 @@ public class DVDDAO {
         this.data_compra = data_compra;
     }
     
+    
+    
+    public boolean Testar_DVD (int cod){    
+        boolean teste = false;
+        
+        try{
+            String sql = "select iddvd from where iddvd=" + cod+ "";
+            PreparedStatement ps = getCon().preparedStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs !=null){
+               while (rs.next()) {
+                   teste = true;
+               }
+            }
+        }catch (SQLException ex) {
+           ex.getMessage();
+            }
+            return teste;
+        
+           
+    }
+              
+     public boolean Testar_Situacao(int cod) {
+        boolean teste = false;
+        
+        try{
+            String sql = "select iddvd from where iddvd=" + cod+ ""+"and situacao='disponivel'";
+            PreparedStatement ps = getCon().preparedStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs !=null){
+               while (rs.next()) {
+                   teste = true;
+               }
+            }
+        }catch (SQLException ex) {
+           ex.getMessage();
+            }
+            return teste;
+          
+     }   
+            
 }
+    
+
