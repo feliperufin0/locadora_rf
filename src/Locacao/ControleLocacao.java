@@ -5,6 +5,9 @@
  */
 package Locacao;
 
+import DAO.Conexao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pedro lucca
@@ -72,7 +75,7 @@ public class ControleLocacao extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
+        jTF_CodDVD = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jTextField19 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -152,6 +155,11 @@ public class ControleLocacao extends javax.swing.JFrame {
         jLabel16.setText("Código do DVD:");
 
         jButton10.setText("OK");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Horas:");
 
@@ -176,7 +184,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_CodDVD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButton10)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,7 +231,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_CodDVD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10)
                     .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
@@ -360,6 +368,48 @@ public class ControleLocacao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField13ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        
+        
+        String pesquisa = jTF_CodDVD.getText();
+        Connection con = Conexao.AbrirConexao();
+        if (pesquisa.equals("") ){
+            JOptionPane.showMessageDialog(null, "digite código do dvd","video locadora", JOptionPane.WARNING_MESSAGE);
+        }else {
+            DVDDAO sql = new DVDDAO (con);
+            int cod = Integer.parseInt(pesquisa);
+            if (sql.Testar_DVD(cod)==false){
+                JOptionPane.showMessageDialog(null, "coigo do dvd não encontrado", "video locadora", JOptionPane.WARNING_MESSAGE);
+                jTF_CodDVD.setText("");
+                jTF_Titulo.setText("");
+                jTF_Valor.setText("");
+                jTF_Categoria.setText("");
+                jTF_Classificacao.setText("");
+                jLbfoto.setIcon(new ImageIcon(""));
+                jTF_Codigo.setText("");
+            }else if(sql.Testar_Situacao(cod)== false){
+                JOptionPane.showMessageDialog(null, "o DVD de codigo("+cod+")"+"esta emprestado","video locadora",
+                JOptionPane.WARNING_MESSAGE);
+                jTF_CodDVD.setText("");
+                jTF_Titulo.setText("");
+                jTF_Valor.setText("");
+                jTF_Categoria.setText("");
+                jTF_Classificacao.setText("");
+                jLbfoto.setIcon(new ImageIcon(""));
+                jTF_Codigo.setText("");
+                
+            }else {
+                InserirDados(cod);
+                jTF_Codigo.setText(pesquisa);
+                jTF_CodDVD.setText("");
+                
+            }
+        }
+        Conexao.FecharConexao(con);
+        
+       
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -434,6 +484,7 @@ public class ControleLocacao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTF_CodDVD;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
@@ -445,7 +496,6 @@ public class ControleLocacao extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
