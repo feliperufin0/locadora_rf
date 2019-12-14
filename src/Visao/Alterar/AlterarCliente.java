@@ -25,7 +25,7 @@ public class AlterarCliente extends javax.swing.JFrame {
     public AlterarCliente() {
         initComponents();
     }
-        public void Inserir_Dados(int cod){
+        public void InserirDados(int cod){
         
             Connection con = Conexao.AbrirConexao();
             ClienteDAO sql = new ClienteDAO(con);
