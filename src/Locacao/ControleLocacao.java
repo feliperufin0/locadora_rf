@@ -5,9 +5,13 @@
  */
 package Locacao;
 
+import DAO.ClienteDAO;
 import DAO.Conexao;
 import DAO.DVDDAO;
+import Modelo.Cliente;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -23,7 +27,7 @@ public class ControleLocacao extends javax.swing.JFrame {
     public ControleLocacao() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +83,7 @@ public class ControleLocacao extends javax.swing.JFrame {
         jTextField17 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jTF_CodDVD = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        btOK = new javax.swing.JButton();
         jTextField19 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
@@ -137,6 +141,11 @@ public class ControleLocacao extends javax.swing.JFrame {
         jButton6.setText("Limpar");
 
         jButton7.setText("Cadastar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Cancelar");
 
@@ -158,10 +167,10 @@ public class ControleLocacao extends javax.swing.JFrame {
 
         jLabel16.setText("Código do DVD:");
 
-        jButton10.setText("OK");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btOK.setText("OK");
+        btOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btOKActionPerformed(evt);
             }
         });
 
@@ -190,7 +199,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jTF_CodDVD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton10)
+                            .addComponent(btOK)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(47, 47, 47)
@@ -239,7 +248,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jTF_CodDVD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10)
+                    .addComponent(btOK)
                     .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -380,7 +389,7 @@ public class ControleLocacao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTF_TituloActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
         
         
         String pesquisa = jTF_CodDVD.getText();
@@ -420,7 +429,11 @@ public class ControleLocacao extends javax.swing.JFrame {
         Conexao.FecharConexao(con);
         
        
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_btOKActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,8 +471,8 @@ public class ControleLocacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btOK;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;

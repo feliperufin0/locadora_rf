@@ -5,6 +5,14 @@
  */
 package DAO;
 
+import Modelo.DVD;
+import Modelo.Filme;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Felipe Rufino
@@ -73,8 +81,56 @@ public class FilmeDAO {
     public void setCapa(String capa) {
         this.capa = capa;
     }
-    
-    
+    public List<DVD> ListarCodFilme(int cod){
+        String sql = "select idfilme from dvd where iddvd = "+cod +"";
+        List<DVD> lista = new ArrayList<>();
+        try{
+        PreparedStatement ps = getCon().preparedStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs != null){
+            while (rs.next()){
+                DVD a = new DVD();
+                a.setCod_filme(rs.getInt(1));
+                
+                lista.add(a);
+            }
+            return lista;
+        }else{
+            return null;
+        }
+        }catch (SQLException e){
+            return null;
+        }
+    }
+    public List<Filme> Pesquisar_Cod_Filme(int cod){
+        String sql = "select idfilme,titulo,ano,duracao,idcategoria,idclassificacao,"
+                    +"capa from filme where idfilme = '"+ cod +"'";
+        List<Filme> lista = new ArrayList<>();
+        try{
+            PreparedStatement ps = getCon().preparedStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs != null){
+                while (rs.next()){
+                    Filme a = new Filme();
+                    a.setCodigo(rs.getInt(1));
+                    a.setTitulo(rs.getString(2));
+                    a.setAno(rs.getInt(3));
+                    a.setDuracao(rs.getString(4));
+                    a.setCod_categoria(rs.getInt(5));
+                    a.setCod_classificao(rs.getInt(6));
+                    a.setCapa(rs.getString(7));
+                    lista.add(a);
+                }
+                return lista;
+            }else{
+                return null;
+            }
+        }catch (SQLException e){
+            return null;
+        }
+    }
     
    
     
