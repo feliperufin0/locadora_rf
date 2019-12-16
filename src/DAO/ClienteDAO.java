@@ -230,9 +230,9 @@ public class ClienteDAO extends ExecuteSQL{
           public String Excluir_Cliente(Cliente a){
               String sql = "delete from cliente where idcliente = ? and nome =? ";
               try {
-                  PreparedStatement pd = getCon().prepareStatement(sql);
+                  PreparedStatement ps = getCon().prepareStatement(sql);
                   ps.setInt(1, a.getCodigo());
-                  ps.setString(2, a.getNome());
+                 ps.setString(2, a.getNome());
                   
                   if (ps.executeUpdate() >0){
                       return "Excluido com sucesso.";

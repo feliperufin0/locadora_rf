@@ -82,7 +82,7 @@ public class FilmeDAO {
         this.capa = capa;
     }
     public List<DVD> ListarCodFilme(int cod){
-        String sql = "select idfilme from dvd where iddvd = "+cod +"";
+        String sql = "select idfilme from dvd where iddvd = "+ cod +"";
         List<DVD> lista = new ArrayList<>();
         try{
         PreparedStatement ps = getCon().preparedStatement(sql);
@@ -91,7 +91,7 @@ public class FilmeDAO {
         if(rs != null){
             while (rs.next()){
                 DVD a = new DVD();
-                a.setCod_filme(rs.getInt(1));
+                a.setcCod_filme(rs.getInt(1));
                 
                 lista.add(a);
             }
