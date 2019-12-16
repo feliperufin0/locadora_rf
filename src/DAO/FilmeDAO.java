@@ -119,7 +119,7 @@ public class FilmeDAO {
                     a.setAno(rs.getInt(3));
                     a.setDuracao(rs.getString(4));
                     a.setCod_categoria(rs.getInt(5));
-                    a.setCod_classificao(rs.getInt(6));
+                    a.setCod_classificacao(rs.getInt(6));
                     a.setCapa(rs.getString(7));
                     lista.add(a);
                 }
@@ -131,7 +131,37 @@ public class FilmeDAO {
             return null;
         }
     }
-    
+    private void InserirDados(int cod){
+        
+        Connection con = Conexao.AbrirConexao();
+        DVDDAO dvd = new DVDDAO(con); 
+        FilmeDAO filme = new FilmeDAO(con);
+        List<DVD> listaDVD = new ArrayList<>();
+        List<Filme> listaFIL = new ArrayList<>;
+        listaDVD = dvd.ListarCodFilme(cod);
+        for (DVD a : listaDVD){
+            int codigo = a.getCod_Filme();
+            listaFIL = filme.Pesquisar_Cod_Filme(codigo);
+        }
+        for (Filme a : listaFIL){
+            jTF_Titulo.setText(a.getTitulo());
+            jTF_Categoria.setText(""+ a.getCod_categoria());
+            jTF_Classificacao.setText("" + a.getCod_classificacao());
+            jLbFoto.setIcon(new ImageIcon("/C:/Video Locadora/Pictures"
+            + a.getCapa() + "/"));  
+        }
+        ClassificacaoDAO cla = new ClassificacaoDAO(con);
+        List<Classificacao> listaCLA = new ArrayList<>();
+        String b = jTF_Classificacao.getText();
+        int codigo = Integer.parseInt(b);
+        listaCLA = cla.ListarPrecoClassificacao(codigo);
+        for (Classificacao a : listaCLA){
+            double preco = a.getPreco();
+            jTF_Valor.setText("" + preco + "0");
+        }
+        Conexao.FecharConexao(con);
+    }
+}
    
     
-}
+

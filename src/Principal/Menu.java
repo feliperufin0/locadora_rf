@@ -34,9 +34,33 @@ public class Menu extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem24 = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -53,15 +77,96 @@ public class Menu extends javax.swing.JFrame {
         jButton9.setText("Sair");
 
         jMenu1.setText("Cadastrar");
+
+        jMenuItem1.setText("Filme");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("DVD");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Cliente");
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Funcionario");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Categoria");
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem6.setText("Classificação");
+        jMenu1.add(jMenuItem6);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Consultar");
+
+        jMenuItem7.setText("Filme");
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("DVD");
+        jMenu2.add(jMenuItem8);
+
+        jMenuItem9.setText("Cliente");
+        jMenu2.add(jMenuItem9);
+
+        jMenuItem10.setText("Funcionario");
+        jMenu2.add(jMenuItem10);
+
+        jMenuItem11.setText("Categoria");
+        jMenu2.add(jMenuItem11);
+
+        jMenuItem12.setText("Classificação");
+        jMenu2.add(jMenuItem12);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Alterar");
+
+        jMenuItem13.setText("Filme");
+        jMenu3.add(jMenuItem13);
+
+        jMenuItem14.setText("DVD");
+        jMenu3.add(jMenuItem14);
+
+        jMenuItem15.setText("Cliente");
+        jMenu3.add(jMenuItem15);
+
+        jMenuItem16.setText("Funcionario");
+        jMenu3.add(jMenuItem16);
+
+        jMenuItem17.setText("Categoria");
+        jMenu3.add(jMenuItem17);
+
+        jMenuItem18.setText("Classificação");
+        jMenu3.add(jMenuItem18);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Excluir");
+
+        jMenuItem19.setText("Filme");
+        jMenu4.add(jMenuItem19);
+
+        jMenuItem20.setText("DVD");
+        jMenu4.add(jMenuItem20);
+
+        jMenuItem21.setText("Cliente");
+        jMenu4.add(jMenuItem21);
+
+        jMenuItem22.setText("Funcionario");
+        jMenu4.add(jMenuItem22);
+
+        jMenuItem23.setText("Categoria");
+        jMenu4.add(jMenuItem23);
+
+        jMenuItem24.setText("Classificação");
+        jMenu4.add(jMenuItem24);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -92,6 +197,10 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,5 +248,29 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
