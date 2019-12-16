@@ -91,7 +91,7 @@ public class FilmeDAO {
         if(rs != null){
             while (rs.next()){
                 DVD a = new DVD();
-                a.setcCod_filme(rs.getInt(1));
+                a.setCod_filme(rs.getInt(1));
                 
                 lista.add(a);
             }

@@ -9,7 +9,7 @@ package DAO;
  *
  * @author Felipe Rufino
  */
-public class CategoriaDAO {
+public class CategoriaDAO{
     private int codigo;
     private String nome;
 

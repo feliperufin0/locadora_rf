@@ -104,16 +104,7 @@ public class DVDDAO {
             return teste;
           
      }   
-        public void AtualizarDate(){
-           Date date = new Date();
-           SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-           SimpleDateFormat hora = new SimpleDateFormat("hh:mm");
-           jTF_DataLocacao.setText(data.format(date));
-           jTF_Horas.setText(horas.format(date));
-           
-           
-           
-        }     
+        
 }
     
 

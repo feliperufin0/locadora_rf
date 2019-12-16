@@ -10,7 +10,9 @@ import DAO.Conexao;
 import DAO.DVDDAO;
 import Modelo.Cliente;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -27,7 +29,40 @@ public class ControleLocacao extends javax.swing.JFrame {
     public ControleLocacao() {
         initComponents();
     }
+    public void InserirDados(int cod){
+        
+            Connection con = Conexao.AbrirConexao();
+            ClienteDAO sql = new ClienteDAO(con);
+            List<Cliente> lista = new ArrayList<>();
+            lista = sql.CapturarCliente(cod);
+            
+            for(Cliente a: lista){
+                
+                jTF_Codigo.setText("" + a.getCodigo());
+                jTF_Nome.setText(a.getNome());
+                jTF_CEP.setText(a.getCEP());
+                jTF_Numero.setText("" + a.getNumero());
+                jTF_Bairro.setText(a.getBairro());
+                jTF_Email.setText(a.getEmail());
+                jTF_Telefone.setText(a.getTelefone());
+                jTF_Rua.setText(a.getRua());
+                jTF_Nascimento.setText(a.getNascimento());
+                jTF_RG.setText(a.getRG());
+                jTF_CPF.setText(a.getCPF());
+            }
+            Conexao.FecharConexao(con);
+        }
     
+    public void AtualizarDate(){
+           Date date = new Date();
+           SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+           SimpleDateFormat hora = new SimpleDateFormat("hh:mm");
+           jTF_DataLocacao.setText(data.format(date));
+           jTF_Horas.setText(hora.format(date));
+           
+           
+           
+        }     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,7 +99,7 @@ public class ControleLocacao extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jTextField11 = new javax.swing.JTextField();
+        jTF_DataLocacao = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
@@ -86,7 +121,7 @@ public class ControleLocacao extends javax.swing.JFrame {
         btOK = new javax.swing.JButton();
         jTextField19 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        jTF_Horas = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLbfoto = new javax.swing.JLabel();
@@ -205,7 +240,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                             .addGap(47, 47, 47)
                             .addComponent(jLabel17)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jTF_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jTF_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +258,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_DataLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +286,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                     .addComponent(btOK)
                     .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -272,7 +307,7 @@ public class ControleLocacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_DataLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -513,18 +548,18 @@ public class ControleLocacao extends javax.swing.JFrame {
     private javax.swing.JTextField jTF_Categoria;
     private javax.swing.JTextField jTF_Classificacao;
     private javax.swing.JTextField jTF_CodDVD;
+    private javax.swing.JTextField jTF_DataLocacao;
+    private javax.swing.JTextField jTF_Horas;
     private javax.swing.JTextField jTF_Titulo;
     private javax.swing.JTextField jTF_Valor;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;

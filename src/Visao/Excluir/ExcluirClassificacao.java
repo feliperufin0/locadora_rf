@@ -110,7 +110,7 @@ public class ExcluirClassificacao extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
 
-        String codigo = jTF_codigo.getText();
+        String codigo = jTF_Codigo.getText();
         String nome = jCB_Nome.getSelectedItem().toString();
 
         Connection con = Conexao.AbrirConexao();
